@@ -21,16 +21,13 @@ const RIFA_CONFIG = {
   pago: {
     nequiDaviplata: "3XX XXX XXXX",
     qrNequiUrl: "assets/qr-nequi.png",
-    qrBreBUrl: "assets/qr-breb.png",
+    qrBreBUrl: "assets/qr-breb.jpg",
     llaveBreB: "@3153018036",
     codigoDonacion: "LIGA-SKATE-MANIZALES",
   },
 
   premios: [
-    { nombre: "Tabla completa de skate", img: "assets/premio-tabla.jpg" },
-    { nombre: "Deck", img: "assets/premio-deck.jpg" },
-    { nombre: "Trucks", img: "assets/premio-trucks.jpg" },
-    { nombre: "Ruedas", img: "assets/premio-ruedas.jpg" },
+    { nombre: "Tabla completa de skate", img: "assets/premio-madero.jpg" },
   ],
 
   // Credenciales de Firebase (las obtienes al crear el proyecto en

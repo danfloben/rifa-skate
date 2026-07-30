@@ -145,9 +145,9 @@ a { color: inherit; }
   margin: 14px 0;
 }
 
-.premios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.premios-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
 .premio-thumb {
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 4;
   background: var(--paper);
   border: 2px solid var(--ink);
   border-radius: 4px;
@@ -155,7 +155,7 @@ a { color: inherit; }
   font-size: 11px; text-align: center; padding: 6px;
   overflow: hidden;
 }
-.premio-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.premio-thumb img { width: 100%; height: 100%; object-fit: contain; }
 
 /* ---------- Grid de boletas (ticket stubs) ---------- */
 .leyenda { display: flex; gap: 14px; font-size: 12px; margin-bottom: 12px; flex-wrap: wrap; }

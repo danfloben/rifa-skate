@@ -18,6 +18,8 @@ function pintarInfoEstatica() {
   document.getElementById("valorBoleta").textContent = money(RIFA_CONFIG.valorBoleta) + " COP";
   document.getElementById("nequiNum").textContent = "Celular: " + RIFA_CONFIG.pago.nequiDaviplata;
   document.getElementById("llaveBreB").textContent = "Llave · " + RIFA_CONFIG.pago.llaveBreB;
+  document.getElementById("qrNequi").src = RIFA_CONFIG.pago.qrNequiUrl;
+  document.getElementById("qrBreB").src = RIFA_CONFIG.pago.qrBreBUrl;
   document.getElementById("codigoDonacion").textContent = RIFA_CONFIG.pago.codigoDonacion;
 
   const premiosGrid = document.getElementById("premiosGrid");
