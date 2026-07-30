@@ -1,4 +1,4 @@
-# 🛹 Skate Solidario — Rifa Tabla Skate
+# 🛹 Impulsemos el Skate — Rifa de un Madero
 
 Web app responsive para gestionar la rifa del club: grid de boletas 00-99,
 reserva vía WhatsApp con comprobante, y panel admin para verificar pagos.

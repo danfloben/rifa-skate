@@ -2,8 +2,11 @@
 // CONFIGURACIÓN DE LA RIFA — edita solo este archivo
 // ============================================================
 const RIFA_CONFIG = {
-  titulo: "Skate Solidario",
-  subtitulo: "Rifa Tabla Skate · Liga de Deporte",
+  titulo: "Impulsemos el Skate",
+  subtitulo: "Rifa de un madero — Ayúdanos a inscribir nuestro club en la Liga de Patinaje de Manizales",
+
+  // Mensaje corto de contexto, se muestra arriba de "Información del sorteo"
+  mensajeIntro: "Somos un grupo de skaters de Manizales buscando conformarnos como club deportivo oficial ante la Liga de Patinaje. Rifamos un madero de skate para reunir los fondos de la inscripción — cada boleta cuenta. ¡Gracias por apoyar!",
 
   fechaSorteo: "2026-08-12",
   fechaSorteoTexto: "Miércoles, 12 de Agosto de 2026",
@@ -31,7 +34,7 @@ const RIFA_CONFIG = {
   },
 
   premios: [
-    { nombre: "Tabla completa de skate", img: "assets/premio-madero.jpg" },
+    { nombre: "Madero de skate", img: "assets/premio-madero.jpg" },
   ],
 
   // Credenciales de Firebase (las obtienes al crear el proyecto en
