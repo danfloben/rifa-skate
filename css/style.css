@@ -311,9 +311,7 @@ a { color: inherit; }
 }
 
 /* ---------- Admin ---------- */
-.admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.admin-table th, .admin-table td { border: 1px solid var(--line); padding: 8px; text-align: left; }
-.admin-table th { background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+#boletasGridAdmin .boleta { cursor: pointer; }
 .badge { padding: 3px 8px; border-radius: 20px; font-size: 11px; font-family: var(--mono); border: 1.5px solid var(--ink); }
 .badge.disponible { background: var(--grip-green); }
 .badge.reservado { background: var(--caution); }

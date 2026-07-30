@@ -22,38 +22,73 @@ function estadoLabel(estado) {
   return `<span class="badge ${estado}">${estado}</span>`;
 }
 
-function renderTabla(boletas) {
-  const body = document.getElementById("tablaBody");
-  const filas = [];
+let adminBoletasState = {};
 
+function renderGrid(boletas) {
+  adminBoletasState = boletas;
+  const grid = document.getElementById("boletasGridAdmin");
+  grid.innerHTML = "";
+
+  let pagadas = 0;
   for (let i = 0; i < RIFA_CONFIG.totalBoletas; i++) {
     const numero = String(i).padStart(2, "0");
-    const b = boletas[numero] || { estado: "disponible" };
-    filas.push({ numero, ...b });
+    const estado = (boletas[numero] && boletas[numero].estado) || "disponible";
+    if (estado === "pagado") pagadas++;
+
+    const el = document.createElement("div");
+    el.className = "boleta " + estado;
+    el.textContent = numero;
+    el.addEventListener("click", () => abrirDetalle(numero));
+    grid.appendChild(el);
   }
 
-  // Muestra primero reservado/pagado, para revisar rápido
-  filas.sort((a, b) => {
-    const orden = { reservado: 0, pagado: 1, disponible: 2 };
-    return orden[a.estado] - orden[b.estado];
-  });
-
   document.getElementById("contador").textContent =
-    `(${filas.filter(f => f.estado === "pagado").length} pagadas / ${RIFA_CONFIG.totalBoletas})`;
-
-  body.innerHTML = filas.map(f => `
-    <tr>
-      <td><b>${f.numero}</b></td>
-      <td>${estadoLabel(f.estado)}</td>
-      <td>${f.nombre || "—"}</td>
-      <td>${f.telefono || "—"}</td>
-      <td>
-        ${f.estado === "reservado" ? `<button class="btn" style="margin:0; padding:6px 10px; font-size:11px" onclick="marcarPagado('${f.numero}')">Marcar pagado</button>` : ""}
-        ${f.estado === "pagado" ? `<button class="btn secondary" style="margin:0; padding:6px 10px; font-size:11px" onclick="liberarBoleta('${f.numero}')">Liberar</button>` : ""}
-      </td>
-    </tr>
-  `).join("");
+    `(${pagadas} pagadas / ${RIFA_CONFIG.totalBoletas})`;
 }
+
+function abrirDetalle(numero) {
+  const b = adminBoletasState[numero] || { estado: "disponible" };
+
+  document.getElementById("adminModalNumero").textContent = "#" + numero;
+  document.getElementById("adminModalBadge").innerHTML = estadoLabel(b.estado);
+  document.getElementById("adminModalBody").innerHTML = `
+    <p><b>Nombre:</b> ${b.nombre || "—"}</p>
+    <p><b>WhatsApp:</b> ${b.telefono || "—"}</p>
+  `;
+
+  const acciones = document.getElementById("adminModalActions");
+  acciones.innerHTML = "";
+  if (b.estado === "reservado") {
+    acciones.innerHTML += `<button class="btn" id="btnMarcarPagado">Marcar pagado</button>`;
+  }
+  if (b.estado === "reservado" || b.estado === "pagado") {
+    acciones.innerHTML += `<button class="btn secondary" id="btnLiberar">Liberar</button>`;
+  }
+
+  if (b.estado === "reservado") {
+    document.getElementById("btnMarcarPagado").addEventListener("click", async () => {
+      await marcarPagado(numero);
+      cerrarDetalle();
+    });
+  }
+  if (b.estado === "reservado" || b.estado === "pagado") {
+    document.getElementById("btnLiberar").addEventListener("click", async () => {
+      await liberarBoleta(numero);
+      cerrarDetalle();
+    });
+  }
+
+  document.getElementById("adminModalBackdrop").classList.add("open");
+}
+
+function cerrarDetalle() {
+  document.getElementById("adminModalBackdrop").classList.remove("open");
+}
+
+document.getElementById("adminModalClose").addEventListener("click", cerrarDetalle);
+document.getElementById("adminModalBackdrop").addEventListener("click", (e) => {
+  if (e.target.id === "adminModalBackdrop") cerrarDetalle();
+});
 
 async function marcarPagado(numero) {
   await guardarBoleta(numero, { estado: "pagado" });
@@ -65,5 +100,5 @@ async function liberarBoleta(numero) {
 }
 
 function iniciarPanel() {
-  escucharBoletas(renderTabla);
+  escucharBoletas(renderGrid);
 }

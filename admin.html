@@ -30,24 +30,29 @@
     </p>
   </section>
 
-  <!-- Tabla de boletas -->
+  <!-- Grid de boletas -->
   <section class="card" id="panelBox" style="display:none">
     <h2>Boletas <span id="contador" style="font-family:var(--mono); font-size:12px"></span></h2>
-    <table class="admin-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Estado</th>
-          <th>Nombre</th>
-          <th>WhatsApp</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody id="tablaBody"></tbody>
-    </table>
+    <div class="leyenda">
+      <span><i class="dot disponible"></i> Disponible</span>
+      <span><i class="dot reservado"></i> Reservado</span>
+      <span><i class="dot pagado"></i> Pagado</span>
+    </div>
+    <div class="boletas-grid" id="boletasGridAdmin"></div>
   </section>
 
 </main>
+
+<!-- Modal de detalle / acciones -->
+<div class="modal-backdrop" id="adminModalBackdrop">
+  <div class="modal">
+    <button class="close" id="adminModalClose">✕</button>
+    <h3>Boleta <span id="adminModalNumero"></span></h3>
+    <div id="adminModalBadge" style="margin-top:4px"></div>
+    <div id="adminModalBody" style="margin-top:12px; font-size:14px"></div>
+    <div id="adminModalActions"></div>
+  </div>
+</div>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
