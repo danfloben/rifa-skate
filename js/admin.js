@@ -101,6 +101,24 @@ async function liberarBoleta(numero) {
   await guardarBoleta(numero, { estado: "disponible", nombre: null, telefono: null });
 }
 
+document.getElementById("btnReiniciarBoletas").addEventListener("click", async () => {
+  if (!confirm("¿Reiniciar TODAS las boletas (00-99) a disponible? Esto borra todas las reservas y pagos registrados. Esta acción no se puede deshacer.")) return;
+  if (!confirm("Confirma una vez más: se van a borrar todos los registros de boletas. ¿Continuar?")) return;
+
+  const btn = document.getElementById("btnReiniciarBoletas");
+  btn.disabled = true;
+  btn.textContent = "Reiniciando...";
+
+  for (let i = 0; i < RIFA_CONFIG.totalBoletas; i++) {
+    const numero = String(i).padStart(2, "0");
+    await guardarBoleta(numero, { estado: "disponible", nombre: null, telefono: null, fechaReserva: null });
+  }
+
+  btn.disabled = false;
+  btn.textContent = "🔄 Reiniciar todas las boletas";
+  alert("Listo, todas las boletas quedaron disponibles.");
+});
+
 function iniciarPanel() {
   escucharBoletas(renderGrid);
 }

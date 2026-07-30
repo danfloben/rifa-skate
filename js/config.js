@@ -17,10 +17,11 @@ const RIFA_CONFIG = {
   totalBoletas: 100, // 00-99
 
   // Donaciones libres recibidas por fuera de las boletas (Bre-B/Nequi
-  // sin número de boleta asociado). El total de la barra de progreso se
-  // calcula solo: (boletas marcadas "pagado" x valorBoleta) + este valor.
-  // Edita este número a mano cada vez que llegue una donación libre.
-  donacionesLibres: 0,
+  // sin número de boleta asociado, o plata recaudada antes de este
+  // sitio). El total de la barra de progreso se calcula solo:
+  // (boletas marcadas "pagado" x valorBoleta) + este valor.
+  // Edita este número a mano cada vez que llegue una donación libre nueva.
+  donacionesLibres: 200000,
 
   // Número de WhatsApp del encargado del club (con indicativo, sin +, sin espacios)
   whatsappNumero: "573153018036",
