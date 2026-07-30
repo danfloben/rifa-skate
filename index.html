@@ -107,12 +107,18 @@
   Desarrollado con ❤️ para el Deporte · Manizales, 2026
 </footer>
 
+<!-- Barra de selección múltiple -->
+<div class="seleccion-bar" id="seleccionBar">
+  <span id="seleccionTexto"></span>
+  <button class="btn" id="btnContinuarSeleccion" style="width:auto; margin:0">Continuar</button>
+</div>
+
 <!-- Modal de reserva -->
 <div class="modal-backdrop" id="modalBackdrop">
   <div class="modal">
     <button class="close" id="modalClose">✕</button>
-    <h3>Boleta <span id="modalNumero"></span></h3>
-    <p style="font-size:13px; margin:4px 0 0">Completa tus datos. Al confirmar se abre WhatsApp con tu solicitud y el número queda <b>reservado</b> mientras se verifica el pago.</p>
+    <h3 id="modalTitulo"></h3>
+    <p id="modalDesc" style="font-size:13px; margin:4px 0 0"></p>
 
     <label for="inputNombre">Nombre completo</label>
     <input type="text" id="inputNombre" placeholder="Tu nombre" />

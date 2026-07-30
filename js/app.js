@@ -3,7 +3,7 @@
 // ============================================================
 
 let boletasState = {};
-let numeroSeleccionado = null;
+let seleccionadas = new Set();
 
 function money(n) {
   return "$" + Number(n).toLocaleString("es-CO");
@@ -65,24 +65,55 @@ function pintarGrid() {
   grid.innerHTML = "";
   for (let i = 0; i < RIFA_CONFIG.totalBoletas; i++) {
     const numero = String(i).padStart(2, "0");
-    const estado = (boletasState[numero] && boletasState[numero].estado) || "disponible";
+    const estadoReal = (boletasState[numero] && boletasState[numero].estado) || "disponible";
+    const estado = seleccionadas.has(numero) ? "seleccionada" : estadoReal;
 
     const el = document.createElement("div");
     el.className = "boleta " + estado;
     el.textContent = numero;
     el.dataset.numero = numero;
 
-    if (estado === "disponible") {
-      el.addEventListener("click", () => abrirModal(numero));
+    if (estadoReal === "disponible") {
+      el.addEventListener("click", () => toggleSeleccion(numero));
     }
     grid.appendChild(el);
   }
   actualizarProgreso();
+  actualizarBarraSeleccion();
 }
 
-function abrirModal(numero) {
-  numeroSeleccionado = numero;
-  document.getElementById("modalNumero").textContent = "#" + numero;
+function toggleSeleccion(numero) {
+  if (seleccionadas.has(numero)) {
+    seleccionadas.delete(numero);
+  } else {
+    seleccionadas.add(numero);
+  }
+  pintarGrid();
+}
+
+function actualizarBarraSeleccion() {
+  const bar = document.getElementById("seleccionBar");
+  const n = seleccionadas.size;
+  if (n === 0) {
+    bar.classList.remove("visible");
+    return;
+  }
+  const numeros = [...seleccionadas].sort();
+  document.getElementById("seleccionTexto").textContent =
+    `${n} boleta${n > 1 ? "s" : ""} seleccionada${n > 1 ? "s" : ""}: ${numeros.map(x => "#" + x).join(", ")}`;
+  bar.classList.add("visible");
+}
+
+document.getElementById("btnContinuarSeleccion").addEventListener("click", () => {
+  if (seleccionadas.size > 0) abrirModal();
+});
+
+function abrirModal() {
+  const numeros = [...seleccionadas].sort();
+  document.getElementById("modalTitulo").textContent =
+    numeros.length > 1 ? "Boletas " + numeros.map(n => "#" + n).join(", ") : "Boleta #" + numeros[0];
+  document.getElementById("modalDesc").innerHTML =
+    `Completa tus datos. Al confirmar se abre WhatsApp con tu solicitud y ${numeros.length > 1 ? "los números quedan" : "el número queda"} <b>reservado${numeros.length > 1 ? "s" : ""}</b> mientras se verifica el pago.`;
   document.getElementById("inputNombre").value = "";
   document.getElementById("inputTelefono").value = "";
   document.getElementById("modalBackdrop").classList.add("open");
@@ -90,7 +121,12 @@ function abrirModal(numero) {
 
 function cerrarModal() {
   document.getElementById("modalBackdrop").classList.remove("open");
-  numeroSeleccionado = null;
+}
+
+function urlAdminConBoletas(numeros) {
+  const url = new URL("admin.html", window.location.href);
+  url.searchParams.set("boletas", numeros.join(","));
+  return url.href;
 }
 
 async function confirmarReserva() {
@@ -102,23 +138,30 @@ async function confirmarReserva() {
     return;
   }
 
-  // 1) Marcar como reservado
-  await guardarBoleta(numeroSeleccionado, {
-    estado: "reservado",
-    nombre,
-    telefono,
-    fechaReserva: new Date().toISOString(),
-  });
+  const numeros = [...seleccionadas].sort();
 
-  // 2) Abrir WhatsApp con el mensaje prellenado hacia el club
+  // 1) Marcar cada boleta seleccionada como reservada
+  for (const numero of numeros) {
+    await guardarBoleta(numero, {
+      estado: "reservado",
+      nombre,
+      telefono,
+      fechaReserva: new Date().toISOString(),
+    });
+  }
+
+  // 2) Abrir WhatsApp con el mensaje prellenado hacia el club, con link al admin
+  const listaNumeros = numeros.map(n => "#" + n).join(", ");
   const mensaje = encodeURIComponent(
-    `Hola! Compré la boleta #${numeroSeleccionado} de la rifa "${RIFA_CONFIG.titulo}".\n` +
+    `Hola! Compré la${numeros.length > 1 ? "s" : ""} boleta${numeros.length > 1 ? "s" : ""} ${listaNumeros} de la rifa "${RIFA_CONFIG.titulo}".\n` +
     `Nombre: ${nombre}\n` +
     `Mi WhatsApp: ${telefono}\n` +
-    `Te envío a continuación el comprobante de pago.`
+    `Te envío a continuación el comprobante de pago.\n` +
+    `Revisa y confirma aquí: ${urlAdminConBoletas(numeros)}`
   );
   window.open(`https://wa.me/${RIFA_CONFIG.whatsappNumero}?text=${mensaje}`, "_blank");
 
+  seleccionadas.clear();
   cerrarModal();
 }
 
