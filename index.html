@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Skate Solidario · Rifa Tabla Skate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="eyebrow">Liga de Deporte · Manizales</div>
+  <h1 id="tituloRifa">Skate Solidario</h1>
+  <div class="sub" id="subtituloRifa">Rifa Tabla Skate</div>
+</header>
+
+<main class="container">
+
+  <!-- Columna izquierda: info del sorteo -->
+  <section class="card">
+    <h2>Información del sorteo</h2>
+    <div class="info-row">
+      <span class="icon">🎟️</span>
+      <div><b>Fecha sorteo</b><span id="fechaSorteo"></span></div>
+    </div>
+    <div class="info-row">
+      <span class="icon">🎰</span>
+      <div><b>Juega con</b><span id="juegaCon"></span></div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-label">
+        <span id="recaudado">$0</span>
+        <span id="meta">Meta: $0</span>
+      </div>
+    </div>
+
+    <div class="valor-boleta">Valor boleta: <span id="valorBoleta"></span></div>
+
+    <h2 style="margin-top:20px">Premios</h2>
+    <div class="premios-grid" id="premiosGrid"></div>
+  </section>
+
+  <!-- Columna centro: grid de boletas -->
+  <section class="card">
+    <h2>Elige tu número</h2>
+    <div class="leyenda">
+      <span><i class="dot disponible"></i> Disponible</span>
+      <span><i class="dot reservado"></i> Reservado</span>
+      <span><i class="dot pagado"></i> Pagado</span>
+    </div>
+    <div class="boletas-grid" id="boletasGrid"></div>
+  </section>
+
+  <!-- Columna derecha: pagos -->
+  <section class="card">
+    <h2>Pagos y donaciones</h2>
+    <div class="qr-block">
+      <img src="assets/qr-nequi.png" alt="QR Nequi/Daviplata" onerror="this.style.display='none'">
+      <div class="label">Nequi / Daviplata</div>
+      <div class="num" id="nequiNum"></div>
+    </div>
+    <div class="qr-block">
+      <img src="assets/qr-breb.png" alt="QR Bre-B" onerror="this.style.display='none'">
+      <div class="label">Donaciones libres (Bre-B)</div>
+      <div class="num" id="llaveBreB"></div>
+    </div>
+    <div class="codigo-donacion">
+      Código: <span id="codigoDonacion"></span>
+    </div>
+    <a href="admin.html" class="btn secondary" style="margin-top:16px">Panel admin</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  Desarrollado con ❤️ para el Deporte · Manizales, 2026
+</footer>
+
+<!-- Modal de reserva -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <button class="close" id="modalClose">✕</button>
+    <h3>Boleta <span id="modalNumero"></span></h3>
+    <p style="font-size:13px; margin:4px 0 0">Completa tus datos. Al confirmar se abre WhatsApp con tu solicitud y el número queda <b>reservado</b> mientras se verifica el pago.</p>
+
+    <label for="inputNombre">Nombre completo</label>
+    <input type="text" id="inputNombre" placeholder="Tu nombre" />
+
+    <label for="inputTelefono">Tu WhatsApp (para confirmarte)</label>
+    <input type="tel" id="inputTelefono" placeholder="300 000 0000" />
+
+    <button class="btn" id="btnConfirmarReserva">Enviar por WhatsApp</button>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="js/config.js"></script>
+<script src="js/firebase-init.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
