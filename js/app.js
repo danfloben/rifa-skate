@@ -163,6 +163,14 @@ document.getElementById("shareCopiar").addEventListener("click", async () => {
   shareMenu.classList.remove("open");
 });
 
+document.getElementById("shareInstagram").addEventListener("click", async () => {
+  // Instagram no permite compartir un link prellenado desde la web,
+  // así que copiamos el enlace para pegarlo en la historia o la bio.
+  await navigator.clipboard.writeText(urlSitio());
+  alert("¡Enlace copiado! Pégalo en tu historia o en la bio de Instagram.");
+  shareMenu.classList.remove("open");
+});
+
 document.addEventListener("click", (e) => {
   if (!document.getElementById("shareFabWrap").contains(e.target)) {
     shareMenu.classList.remove("open");
