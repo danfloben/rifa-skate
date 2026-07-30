@@ -378,6 +378,55 @@ a { color: inherit; }
 
 .modal .close { float: right; background: none; border: none; font-size: 18px; cursor: pointer; }
 
+/* ---------- Botón flotante de compartir ---------- */
+.share-fab-wrap {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.share-fab {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  font-size: 24px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.share-fab:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.share-menu {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 10px;
+  min-width: 180px;
+}
+.share-menu.open { display: flex; }
+.share-opt {
+  font-family: var(--body);
+  font-size: 13px;
+  padding: 9px 10px;
+  border-radius: 4px;
+  border: none;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+.share-opt:hover { background: var(--grip-green); }
+
 /* ---------- Footer ---------- */
 .footer {
   text-align: center;

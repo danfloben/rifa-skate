@@ -131,6 +131,44 @@ document.getElementById("lightboxBackdrop").addEventListener("click", (e) => {
   if (e.target.id === "lightboxBackdrop") cerrarLightbox();
 });
 
+// ---- Compartir ----
+function textoCompartir() {
+  return "🛹 Apoya el futuro del deporte en Manizales: participa en la rifa Skate Solidario y ayuda a pagar la inscripción a la Liga de Patinaje. ¡Boletas desde $10.000!";
+}
+
+function urlSitio() {
+  return window.location.href.split("#")[0];
+}
+
+const shareMenu = document.getElementById("shareMenu");
+
+document.getElementById("shareWhatsapp").href =
+  `https://wa.me/?text=${encodeURIComponent(textoCompartir() + " " + urlSitio())}`;
+document.getElementById("shareFacebook").href =
+  `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlSitio())}`;
+document.getElementById("shareX").href =
+  `https://twitter.com/intent/tweet?text=${encodeURIComponent(textoCompartir())}&url=${encodeURIComponent(urlSitio())}`;
+
+document.getElementById("shareFabBtn").addEventListener("click", () => {
+  if (navigator.share) {
+    navigator.share({ title: RIFA_CONFIG.titulo, text: textoCompartir(), url: urlSitio() }).catch(() => {});
+  } else {
+    shareMenu.classList.toggle("open");
+  }
+});
+
+document.getElementById("shareCopiar").addEventListener("click", async () => {
+  await navigator.clipboard.writeText(urlSitio());
+  alert("¡Enlace copiado!");
+  shareMenu.classList.remove("open");
+});
+
+document.addEventListener("click", (e) => {
+  if (!document.getElementById("shareFabWrap").contains(e.target)) {
+    shareMenu.classList.remove("open");
+  }
+});
+
 // ---- Init ----
 pintarInfoEstatica();
 escucharBoletas((data) => {

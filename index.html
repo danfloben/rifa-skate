@@ -4,6 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Skate Solidario · Rifa Tabla Skate</title>
+<meta name="description" content="Rifa solidaria de una tabla de skate completa para recaudar fondos y pagar la inscripción a la Liga de Patinaje de Manizales. Boletas desde $10.000 COP. Sorteo sábado 08 de agosto de 2026 con la Lotería de Boyacá.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://danfloben.github.io/rifa-skate/">
+<meta property="og:title" content="Skate Solidario · Rifa Tabla Skate">
+<meta property="og:description" content="Apoya el futuro del deporte en Manizales. Rifa solidaria de una tabla de skate para pagar la inscripción a la Liga de Patinaje. Boletas desde $10.000 COP.">
+<meta property="og:image" content="https://danfloben.github.io/rifa-skate/assets/poster-skate-solidario.jpg">
+<meta property="og:locale" content="es_CO">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Skate Solidario · Rifa Tabla Skate">
+<meta name="twitter:description" content="Apoya el futuro del deporte en Manizales. Rifa solidaria de una tabla de skate para pagar la inscripción a la Liga de Patinaje. Boletas desde $10.000 COP.">
+<meta name="twitter:image" content="https://danfloben.github.io/rifa-skate/assets/poster-skate-solidario.jpg">
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛹</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -41,7 +55,7 @@
 
     <div class="valor-boleta">Valor boleta: <span id="valorBoleta"></span></div>
 
-    <h2 style="margin-top:20px">Premios</h2>
+    <h2 style="margin-top:20px">Premio</h2>
     <div class="premios-grid" id="premiosGrid"></div>
   </section>
 
@@ -113,6 +127,17 @@
     <img class="lightbox-img" id="lightboxImg" alt="Imagen ampliada">
     <a class="btn lightbox-download" id="lightboxDownload" download>⬇ Descargar imagen</a>
   </div>
+</div>
+
+<!-- Botón flotante de compartir (sticky) -->
+<div class="share-fab-wrap" id="shareFabWrap">
+  <div class="share-menu" id="shareMenu">
+    <a class="share-opt" id="shareWhatsapp" target="_blank" rel="noopener">🟢 WhatsApp</a>
+    <a class="share-opt" id="shareFacebook" target="_blank" rel="noopener">🔵 Facebook</a>
+    <a class="share-opt" id="shareX" target="_blank" rel="noopener">⚫ X (Twitter)</a>
+    <button class="share-opt" id="shareCopiar" type="button">🔗 Copiar enlace</button>
+  </div>
+  <button class="share-fab" id="shareFabBtn" aria-label="Compartir la rifa">📤</button>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
