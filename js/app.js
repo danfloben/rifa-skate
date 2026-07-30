@@ -51,7 +51,8 @@ function cerrarLightbox() {
 }
 
 function actualizarProgreso() {
-  const recaudado = RIFA_CONFIG.recaudadoManual;
+  const pagadas = Object.values(boletasState).filter(b => b.estado === "pagado").length;
+  const recaudado = (pagadas * RIFA_CONFIG.valorBoleta) + RIFA_CONFIG.donacionesLibres;
   const pct = Math.min(100, (recaudado / RIFA_CONFIG.metaRecaudo) * 100);
   document.getElementById("progressFill").style.width = pct + "%";
   document.getElementById("recaudado").textContent = money(recaudado);

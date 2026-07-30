@@ -16,10 +16,11 @@ const RIFA_CONFIG = {
   metaRecaudo: 1750000, // COP (boletas + donaciones libres)
   totalBoletas: 100, // 00-99
 
-  // Total recaudado a mostrar en la barra de progreso. Se actualiza
-  // manualmente (suma boletas pagadas + donaciones libres por Bre-B/Nequi),
-  // independiente del conteo de boletas marcadas "pagado" en el admin.
-  recaudadoManual: 200000,
+  // Donaciones libres recibidas por fuera de las boletas (Bre-B/Nequi
+  // sin número de boleta asociado). El total de la barra de progreso se
+  // calcula solo: (boletas marcadas "pagado" x valorBoleta) + este valor.
+  // Edita este número a mano cada vez que llegue una donación libre.
+  donacionesLibres: 0,
 
   // Número de WhatsApp del encargado del club (con indicativo, sin +, sin espacios)
   whatsappNumero: "573153018036",
