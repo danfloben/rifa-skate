@@ -28,13 +28,20 @@ function pintarInfoEstatica() {
       <img src="${p.img}" alt="${p.nombre}" onerror="this.parentElement.textContent='${p.nombre}'">
     </div>
   `).join("");
-  premiosGrid.querySelectorAll("img").forEach((img) => {
-    img.addEventListener("click", () => abrirLightbox(img.src));
-  });
+
+  [...premiosGrid.querySelectorAll("img"), document.getElementById("qrNequi"), document.getElementById("qrBreB")]
+    .forEach(habilitarZoom);
 }
 
-function abrirLightbox(src) {
+function habilitarZoom(img) {
+  img.addEventListener("click", () => abrirLightbox(img.src, img.src.split("/").pop()));
+}
+
+function abrirLightbox(src, nombreArchivo) {
   document.getElementById("lightboxImg").src = src;
+  const dl = document.getElementById("lightboxDownload");
+  dl.href = src;
+  dl.setAttribute("download", nombreArchivo || "");
   document.getElementById("lightboxBackdrop").classList.add("open");
 }
 
@@ -43,8 +50,7 @@ function cerrarLightbox() {
 }
 
 function actualizarProgreso() {
-  const pagadas = Object.values(boletasState).filter(b => b.estado === "pagado").length;
-  const recaudado = pagadas * RIFA_CONFIG.valorBoleta;
+  const recaudado = RIFA_CONFIG.recaudadoManual;
   const pct = Math.min(100, (recaudado / RIFA_CONFIG.metaRecaudo) * 100);
   document.getElementById("progressFill").style.width = pct + "%";
   document.getElementById("recaudado").textContent = money(recaudado);

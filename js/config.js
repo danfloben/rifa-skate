@@ -11,8 +11,13 @@ const RIFA_CONFIG = {
   juegaCon: "Lotería de Boyacá (Últimas 2 cifras del Premio Mayor)",
 
   valorBoleta: 10000, // COP
-  metaRecaudo: 1750000, // COP (100 boletas x 10.000... si aplica)
+  metaRecaudo: 1750000, // COP (boletas + donaciones libres)
   totalBoletas: 100, // 00-99
+
+  // Total recaudado a mostrar en la barra de progreso. Se actualiza
+  // manualmente (suma boletas pagadas + donaciones libres por Bre-B/Nequi),
+  // independiente del conteo de boletas marcadas "pagado" en el admin.
+  recaudadoManual: 200000,
 
   // Número de WhatsApp del encargado del club (con indicativo, sin +, sin espacios)
   whatsappNumero: "573153018036",

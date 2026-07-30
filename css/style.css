@@ -167,13 +167,21 @@ a { color: inherit; }
   cursor: pointer;
   z-index: 51;
 }
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 92vw;
+}
 .lightbox-img {
   max-width: 92vw;
-  max-height: 88vh;
+  max-height: 78vh;
   object-fit: contain;
   border-radius: 6px;
   box-shadow: 0 0 0 3px var(--paper);
 }
+.lightbox-download { width: auto; margin: 0; padding: 10px 20px; }
 
 /* ---------- Grid de boletas (ticket stubs) ---------- */
 .leyenda { display: flex; gap: 14px; font-size: 12px; margin-bottom: 12px; flex-wrap: wrap; }
@@ -237,7 +245,7 @@ a { color: inherit; }
 
 /* ---------- Pagos ---------- */
 .qr-block { text-align: center; margin-bottom: 16px; }
-.qr-block img { width: 130px; height: 130px; object-fit: contain; border: 2px solid var(--ink); border-radius: 4px; margin-bottom: 6px; }
+.qr-block img { width: 130px; height: 130px; object-fit: contain; border: 2px solid var(--ink); border-radius: 4px; margin-bottom: 6px; cursor: zoom-in; }
 .qr-block .label { font-family: var(--display); font-size: 13px; text-transform: uppercase; }
 .qr-block .num { font-family: var(--mono); font-size: 13px; }
 

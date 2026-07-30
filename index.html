@@ -96,10 +96,13 @@
   </div>
 </div>
 
-<!-- Lightbox del premio -->
+<!-- Lightbox de imágenes (premio y QR) -->
 <div class="modal-backdrop" id="lightboxBackdrop">
   <button class="lightbox-close" id="lightboxClose">✕</button>
-  <img class="lightbox-img" id="lightboxImg" alt="Premio ampliado">
+  <div class="lightbox-content">
+    <img class="lightbox-img" id="lightboxImg" alt="Imagen ampliada">
+    <a class="btn lightbox-download" id="lightboxDownload" download>⬇ Descargar imagen</a>
+  </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
