@@ -20,7 +20,7 @@ const RIFA_CONFIG = {
   recaudadoManual: 200000,
 
   // Número de WhatsApp del encargado del club (con indicativo, sin +, sin espacios)
-  whatsappNumero: "573153018036",
+  whatsappNumero: "573206194814",
 
   // Datos de pago (se muestran en la sección de pagos)
   pago: {

@@ -108,10 +108,10 @@ async function confirmarReserva() {
 
   // 2) Abrir WhatsApp con el mensaje prellenado hacia el club
   const mensaje = encodeURIComponent(
-    `Hola! Quiero reservar la boleta #${numeroSeleccionado} de la rifa "${RIFA_CONFIG.titulo}".\n` +
+    `Hola! Compré la boleta #${numeroSeleccionado} de la rifa "${RIFA_CONFIG.titulo}".\n` +
     `Nombre: ${nombre}\n` +
     `Mi WhatsApp: ${telefono}\n` +
-    `Adjunto el comprobante de pago.`
+    `Te envío a continuación el comprobante de pago.`
   );
   window.open(`https://wa.me/${RIFA_CONFIG.whatsappNumero}?text=${mensaje}`, "_blank");
 
