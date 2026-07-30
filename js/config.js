@@ -38,11 +38,11 @@ const RIFA_CONFIG = {
   // Credenciales de Firebase (las obtienes al crear el proyecto en
   // https://console.firebase.google.com — ver README.md paso a paso)
   firebase: {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_PROYECTO.firebaseapp.com",
-    projectId: "TU_PROYECTO",
-    storageBucket: "TU_PROYECTO.appspot.com",
-    messagingSenderId: "TU_SENDER_ID",
-    appId: "TU_APP_ID",
+    apiKey: "AIzaSyD6zV78_Eoo709r5G_o-qFaUTAoMX6aNUI",
+    authDomain: "skate-solidario.firebaseapp.com",
+    projectId: "skate-solidario",
+    storageBucket: "skate-solidario.firebasestorage.app",
+    messagingSenderId: "422997557518",
+    appId: "1:422997557518:web:338fb009a02895a113175f",
   },
 };
