@@ -28,6 +28,18 @@ function pintarInfoEstatica() {
       <img src="${p.img}" alt="${p.nombre}" onerror="this.parentElement.textContent='${p.nombre}'">
     </div>
   `).join("");
+  premiosGrid.querySelectorAll("img").forEach((img) => {
+    img.addEventListener("click", () => abrirLightbox(img.src));
+  });
+}
+
+function abrirLightbox(src) {
+  document.getElementById("lightboxImg").src = src;
+  document.getElementById("lightboxBackdrop").classList.add("open");
+}
+
+function cerrarLightbox() {
+  document.getElementById("lightboxBackdrop").classList.remove("open");
 }
 
 function actualizarProgreso() {
@@ -105,6 +117,11 @@ document.getElementById("modalBackdrop").addEventListener("click", (e) => {
   if (e.target.id === "modalBackdrop") cerrarModal();
 });
 document.getElementById("btnConfirmarReserva").addEventListener("click", confirmarReserva);
+
+document.getElementById("lightboxClose").addEventListener("click", cerrarLightbox);
+document.getElementById("lightboxBackdrop").addEventListener("click", (e) => {
+  if (e.target.id === "lightboxBackdrop") cerrarLightbox();
+});
 
 // ---- Init ----
 pintarInfoEstatica();

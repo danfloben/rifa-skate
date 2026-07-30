@@ -19,7 +19,7 @@ const RIFA_CONFIG = {
 
   // Datos de pago (se muestran en la sección de pagos)
   pago: {
-    nequiDaviplata: "3XX XXX XXXX",
+    nequiDaviplata: "315 301 8036",
     qrNequiUrl: "assets/qr-nequi.png",
     qrBreBUrl: "assets/qr-breb.jpg",
     llaveBreB: "@3153018036",

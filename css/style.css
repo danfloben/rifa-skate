@@ -155,7 +155,25 @@ a { color: inherit; }
   font-size: 11px; text-align: center; padding: 6px;
   overflow: hidden;
 }
-.premio-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.premio-thumb img { width: 100%; height: 100%; object-fit: contain; cursor: zoom-in; }
+
+.lightbox-close {
+  position: absolute;
+  top: 14px; right: 18px;
+  background: none;
+  border: none;
+  color: var(--paper);
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 51;
+}
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px var(--paper);
+}
 
 /* ---------- Grid de boletas (ticket stubs) ---------- */
 .leyenda { display: flex; gap: 14px; font-size: 12px; margin-bottom: 12px; flex-wrap: wrap; }
