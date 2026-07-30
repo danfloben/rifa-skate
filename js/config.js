@@ -5,10 +5,9 @@ const RIFA_CONFIG = {
   titulo: "Skate Solidario",
   subtitulo: "Rifa Tabla Skate · Liga de Deporte",
 
-  // ⚠️ Revisa esto: el mockup decía 01 de agosto, el poster dice 08 de agosto.
-  fechaSorteo: "2026-08-08",
-  fechaSorteoTexto: "Sábado, 08 de Agosto de 2026",
-  juegaCon: "Lotería de Boyacá (Últimas 2 cifras del Premio Mayor)",
+  fechaSorteo: "2026-08-12",
+  fechaSorteoTexto: "Miércoles, 12 de Agosto de 2026",
+  juegaCon: "Lotería de Manizales (Últimas 2 cifras del Premio Mayor)",
 
   valorBoleta: 10000, // COP
   metaRecaudo: 1750000, // COP (boletas + donaciones libres)
