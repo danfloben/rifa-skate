@@ -156,7 +156,7 @@ async function confirmarReserva() {
   // 2) Abrir WhatsApp con el mensaje prellenado hacia el club, con link al admin
   const listaNumeros = numeros.map(n => "#" + n).join(", ");
   const mensaje = encodeURIComponent(
-    `Hola! Compré la${numeros.length > 1 ? "s" : ""} boleta${numeros.length > 1 ? "s" : ""} ${listaNumeros} de la rifa "${RIFA_CONFIG.titulo}".\n` +
+    `Hola! Quiero comprar la${numeros.length > 1 ? "s" : ""} boleta${numeros.length > 1 ? "s" : ""} ${listaNumeros} de la rifa "${RIFA_CONFIG.titulo}".\n` +
     `Nombre: ${nombre}\n` +
     `Mi WhatsApp: ${telefono}\n` +
     `Te envío a continuación el comprobante de pago.\n` +
