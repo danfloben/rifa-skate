@@ -93,15 +93,18 @@ function toggleSeleccion(numero) {
 
 function actualizarBarraSeleccion() {
   const bar = document.getElementById("seleccionBar");
+  const shareFab = document.getElementById("shareFabWrap");
   const n = seleccionadas.size;
   if (n === 0) {
     bar.classList.remove("visible");
+    shareFab.classList.remove("arriba");
     return;
   }
   const numeros = [...seleccionadas].sort();
   document.getElementById("seleccionTexto").textContent =
     `${n} boleta${n > 1 ? "s" : ""} seleccionada${n > 1 ? "s" : ""}: ${numeros.map(x => "#" + x).join(", ")}`;
   bar.classList.add("visible");
+  shareFab.classList.add("arriba");
 }
 
 document.getElementById("btnContinuarSeleccion").addEventListener("click", () => {
