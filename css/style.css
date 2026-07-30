@@ -184,6 +184,8 @@ a { color: inherit; }
 .lightbox-download { width: auto; margin: 0; padding: 10px 20px; }
 
 /* ---------- Grid de boletas (ticket stubs) ---------- */
+.instrucciones-grid { font-size: 13px; color: rgba(25,23,20,0.75); margin: 0 0 12px; }
+
 .leyenda { display: flex; gap: 14px; font-size: 12px; margin-bottom: 12px; flex-wrap: wrap; }
 .leyenda span { display: inline-flex; align-items: center; gap: 5px; }
 .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; border: 1.5px solid var(--ink); }
