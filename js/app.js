@@ -10,7 +10,7 @@ function money(n) {
 }
 
 function pintarInfoEstatica() {
-  document.getElementById("tituloRifa").textContent = "🛹 " + RIFA_CONFIG.titulo;
+  document.getElementById("tituloRifa").textContent = RIFA_CONFIG.titulo + " 🛹";
   document.getElementById("subtituloRifa").textContent = RIFA_CONFIG.subtitulo;
   document.getElementById("mensajeIntro").textContent = RIFA_CONFIG.mensajeIntro;
   document.getElementById("fechaSorteo").textContent = RIFA_CONFIG.fechaSorteoTexto;
@@ -134,7 +134,7 @@ document.getElementById("lightboxBackdrop").addEventListener("click", (e) => {
 
 // ---- Compartir ----
 function textoCompartir() {
-  return `🛹 Apoya el futuro del deporte en Manizales: participa en la rifa "${RIFA_CONFIG.titulo}" y ayuda a pagar la inscripción de nuestro club a la Liga de Patinaje. ¡Boletas desde $10.000!`;
+  return `🛹 Apoya el futuro del deporte en Manizales: participa en la rifa "${RIFA_CONFIG.titulo}" y ayuda a pagar la afiliación de nuestro club a la Liga Caldense de Patinaje. ¡Boletas desde $10.000!`;
 }
 
 function urlSitio() {
