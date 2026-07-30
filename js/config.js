@@ -6,7 +6,7 @@ const RIFA_CONFIG = {
   subtitulo: "Rifa de un madero, pro afiliación a la Liga Caldense de Patinaje",
 
   // Mensaje corto de contexto, se muestra arriba de "Información del sorteo"
-  mensajeIntro: "Somos un grupo de skaters de Manizales buscando conformarnos como club deportivo oficial ante la Liga Caldense de Patinaje. Rifamos un madero de skate para reunir los fondos de la afiliación — cada boleta cuenta. ¡Gracias por apoyar!",
+  mensajeIntro: "Somos un grupo de skaters de Manizales formalizando nuestro club deportivo ante la Liga Caldense de Patinaje. Rifamos un madero de skate para reunir los fondos de la afiliación — cada boleta cuenta. ¡Gracias por apoyar!",
 
   fechaSorteo: "2026-08-12",
   fechaSorteoTexto: "Miércoles, 12 de Agosto de 2026",
