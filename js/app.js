@@ -58,6 +58,8 @@ function actualizarProgreso() {
 
 function pintarGrid() {
   const grid = document.getElementById("boletasGrid");
+  document.getElementById("boletasLoader").classList.add("oculto");
+  grid.classList.remove("oculto");
   grid.innerHTML = "";
   for (let i = 0; i < RIFA_CONFIG.totalBoletas; i++) {
     const numero = String(i).padStart(2, "0");

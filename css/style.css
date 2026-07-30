@@ -191,6 +191,54 @@ a { color: inherit; }
 .dot.reservado { background: var(--caution); }
 .dot.pagado { background: var(--sold-red); }
 
+.oculto { display: none !important; }
+
+.wheel-loader-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 36px 0;
+}
+.wheel-loader {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--grip-green);
+  border: 4px solid var(--ink);
+  position: relative;
+  animation: girar-llanta 0.8s linear infinite;
+}
+.wheel-loader::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 18px; height: 18px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.wheel-loader::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 6px; height: 6px;
+  background: var(--ink);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.wheel-loader-text {
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--orange-dark);
+}
+@keyframes girar-llanta {
+  to { transform: rotate(360deg); }
+}
+
 .boletas-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

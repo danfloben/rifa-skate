@@ -27,6 +27,8 @@ let adminBoletasState = {};
 function renderGrid(boletas) {
   adminBoletasState = boletas;
   const grid = document.getElementById("boletasGridAdmin");
+  document.getElementById("boletasLoaderAdmin").classList.add("oculto");
+  grid.classList.remove("oculto");
   grid.innerHTML = "";
 
   let pagadas = 0;
