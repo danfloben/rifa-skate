@@ -440,6 +440,7 @@ a { color: inherit; }
   border: 2px solid var(--ink);
   box-shadow: 3px 3px 0 var(--ink);
   font-size: 24px;
+  color: #fff;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
 }
